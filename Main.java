@@ -19,6 +19,13 @@ abstract class Usuario {
     public abstract String saudacao();
 }
 
+// Classe de exceção personalizada
+class MeuException extends Exception {
+    public MeuException(String message) {
+        super(message);
+    }
+}
+
 // Classe para representar um usuário registrado
 class UsuarioRegistrado extends Usuario {
     public UsuarioRegistrado(String login, String senha) {
@@ -43,7 +50,8 @@ class ArquivoCSV {
             printWriter.println(login + "," + senha);
             printWriter.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();r
+            throw new MeuException("Erro ao adicionar usuario usuário no arquivo CSV.");
         }
     }
 
@@ -62,15 +70,9 @@ class ArquivoCSV {
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
+            throw new MeuException("Erro ao verificar usuário no arquivo CSV.");
         }
         return false;
-    }
-}
-
-// Classe de exceção personalizada
-class MeuException extends Exception {
-    public MeuException(String message) {
-        super(message);
     }
 }
 
@@ -99,6 +101,7 @@ class HistoricoLogin {
             printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+            throw new MeuException("Erro ao escrever no arquivo CSV.");
         }
     }
 }
