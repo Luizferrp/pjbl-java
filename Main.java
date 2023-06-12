@@ -50,8 +50,11 @@ class ArquivoCSV {
             printWriter.println(login + "," + senha);
             printWriter.close();
         } catch (IOException e) {
-            e.printStackTrace();r
+          try{
             throw new MeuException("Erro ao adicionar usuario usuário no arquivo CSV.");
+          } catch (MeuException ex) {
+            System.out.println("Erro ao verificar usuário!");
+          }
         }
     }
 
@@ -69,8 +72,11 @@ class ArquivoCSV {
             }
             bufferedReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new MeuException("Erro ao verificar usuário no arquivo CSV.");
+          try{
+          throw new MeuException("Erro ao verificar usuário no arquivo CSV.");
+          } catch (MeuException ey) {
+            System.out.println("Erro ao verificar Usuario no arquivo csv");
+          }
         }
         return false;
     }
@@ -100,8 +106,11 @@ class HistoricoLogin {
 
             printWriter.close();
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new MeuException("Erro ao escrever no arquivo CSV.");
+          try{
+            throw new MeuException("erro ao verificar usuario");
+          } catch (MeuException ez) {
+            System.out.println("Erro ao verificar usuário!");
+          }
         }
     }
 }
